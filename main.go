@@ -79,7 +79,7 @@ func main() {
 		Model:       gogpt.GPT3Davinci,
 		MaxTokens:   100,
 		Temperature: 0.5,
-		Prompt:      "Generate 10 synonyms for swimsuit",
+		Prompt:      "List 10 synonyms for swimsuit",
 		//Stream:    true,
 	}
 
@@ -87,5 +87,17 @@ func main() {
 	if err != nil {
 		return
 	}
-	fmt.Println(resp.Choices[0].Text)
+
+	message := resp.Choices[0].Text
+
+	fmt.Println(message)
+
+	/*
+		re := regexp.MustCompile(`"(.+)"`)
+		synonyms := re.FindAllString(message, 10)
+
+		for _, synonym := range synonyms {
+			fmt.Println(synonym)
+		}
+	*/
 }
